@@ -13475,6 +13475,7 @@ Supported protocol values are 'sphinx' (Sphinx 0.9.x API protocol)
 and 'mysql41' (MySQL protocol used since 4.1 upto at least 5.1).
 More details on MySQL protocol support can be found in
 <xref linkend="sphinxql"/> section.
+Starting with version 2.3.2-beta a HTTP protocol is added using protocol value 'http', available only with 'thread_pool' workers.
 </para>
 <para>
 Adding a "_vip" suffix to a protocol (for instance "sphinx_vip" or "mysql41_vip")
@@ -13490,6 +13491,7 @@ listen = 192.168.0.1:5000
 listen = /var/run/sphinx.s
 listen = 9312
 listen = localhost:9306:mysql41
+listen = localhost:9307:http
 </programlisting>
 <para>
 There can be multiple listen directives, <code>searchd</code> will
@@ -13499,7 +13501,7 @@ on all available interfaces using the default SphinxAPI port 9312.
 Starting with 1.10-beta, it will also listen on default SphinxQL
 port 9306. Both port numbers are assigned by IANA (see
 <ulink url="http://www.iana.org/assignments/port-numbers">http://www.iana.org/assignments/port-numbers</ulink>
-for details) and should therefore be available.
+for details) and should therefore be available. For 'http' protocol a port number has not been yet submitted to IANA.
 </para>
 <para>
 Unix-domain sockets are not supported on Windows.
